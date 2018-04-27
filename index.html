@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <script>
+
+        let computerScore = 0;
+        let playerScore = 0;
+        let round = 0;
+
+        function computerPlay() {
+            let randomNumber = Math.floor(Math.random() * 3);
+            if (randomNumber === 0) {
+                return 'rock';
+            } else if (randomNumber === 1) {
+                return 'paper';
+            } else {
+                return 'scissors';
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+
+            if (computerSelection === 'rock' && playerSelection === 'paper'
+                || computerSelection === 'paper' && playerSelection === 'scissors'
+                || computerSelection === 'scissors' && playerSelection === 'rock') {
+                return (`You win this round! ${playerSelection} beats ${computerSelection}`);
+                playerScore++;
+            } else if (playerSelection === computerSelection) {
+                return (`It's a draw! You both played ${playerSelection}`);
+            } else {
+                return (`You lose this round, ${computerSelection} beats ${playerSelection}`);
+                computerScore++;
+            }
+        }
+
+        function game() {
+
+            while (round < 5) {
+                let playerSelection = prompt("Pick rock, paper or scissors").toLowerCase();
+                playRound();
+                round++;
+                console.log(playRound(playerSelection, computerSelection))
+            }
+
+            if (playerScore > computerScore) {
+                return (`You won the game with a score of ${playerScore} vs ${computerScore}`)
+            } else if (playerScore < computerScore) {
+                return (`You lost the game with a score of ${playerScore} vs ${computerScore}. Better luck next time!`)
+            } else {
+                return (`It\'s a draw! You both scored ${playerScore}`)
+            }
+
+        }
+
+        const computerSelection = computerPlay()
+        console.log(game())
+
+    </script>
+</body>
+
+</html>
