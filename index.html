@@ -2,68 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
 </head>
 
 <body>
-    <script>
+  <div class="container">
+    <h2>a game of</h2>
+    <h1>Rock Paper Scissors</h1>
+    <p class="lead">pick rock paper or scissors</p>
 
-        let computerScore = 0;
-        let playerScore = 0;
-        let round = 0;
+    <div class="buttons">
+      <button id="rock" class="btn">
+        <span class="rock"></span>
+      </button>
+      <button id="paper" class="btn">
+        <span class="paper"></span>
+      </button>
+      <button id="scissors" class="btn">
+        <span class="scissors"></span>
+      </button>
+    </div>
+    <div class="score">
+      <span class="user">user: 0</span>
+      <span class="computer">computer: 0</span>
+    </div>
+    <div>
+      <p class="reset">start over</p>
+    </div>
 
-        function computerPlay() {
-            let randomNumber = Math.floor(Math.random() * 3);
-            if (randomNumber === 0) {
-                return 'rock';
-            } else if (randomNumber === 1) {
-                return 'paper';
-            } else {
-                return 'scissors';
-            }
-        }
+  </div>
 
-        function playRound(playerSelection, computerSelection) {
+  <!-- <script src="main.js"></script> -->
+  <script src="main.js"></script>
 
-            if (computerSelection === 'rock' && playerSelection === 'paper'
-                || computerSelection === 'paper' && playerSelection === 'scissors'
-                || computerSelection === 'scissors' && playerSelection === 'rock') {
-                return (`You win this round! ${playerSelection} beats ${computerSelection}`);
-                playerScore++;
-            } else if (playerSelection === computerSelection) {
-                return (`It's a draw! You both played ${playerSelection}`);
-            } else {
-                return (`You lose this round, ${computerSelection} beats ${playerSelection}`);
-                computerScore++;
-            }
-        }
-
-        function game() {
-
-            while (round < 5) {
-                let playerSelection = prompt("Pick rock, paper or scissors").toLowerCase();
-                playRound();
-                round++;
-                console.log(playRound(playerSelection, computerSelection))
-            }
-
-            if (playerScore > computerScore) {
-                return (`You won the game with a score of ${playerScore} vs ${computerScore}`)
-            } else if (playerScore < computerScore) {
-                return (`You lost the game with a score of ${playerScore} vs ${computerScore}. Better luck next time!`)
-            } else {
-                return (`It\'s a draw! You both scored ${playerScore}`)
-            }
-
-        }
-
-        const computerSelection = computerPlay()
-        console.log(game())
-
-    </script>
 </body>
 
 </html>
